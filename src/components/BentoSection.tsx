@@ -7,16 +7,12 @@ import {
   Briefcase,
   CheckCircle2,
   GraduationCap,
-  Medal,
-  Sparkles,
   Trophy,
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { Badge } from "./ui/Badge";
 
 export function BentoSection() {
-  const { academic, directorship, athletics } = portfolioData;
-
   return (
     <section id="proof" className="py-20 border-t border-slate-200/80 scroll-mt-24 bg-slate-50/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -47,28 +43,29 @@ export function BentoSection() {
             className="porcelain-card rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-200 transition-all"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/60 shadow-2xs">
-                    <GraduationCap className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900 leading-tight">
-                      Uni of Moratuwa
-                    </h3>
-                    <p className="text-[11px] font-mono text-slate-500">
-                      Faculty of IT (Hons)
-                    </p>
-                  </div>
+              {/* Top Row: Icon + Highlighted Badge */}
+              <div className="flex items-center justify-between gap-2 mb-3.5">
+                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/60 shadow-2xs">
+                  <GraduationCap className="w-5 h-5" />
                 </div>
 
-                <Badge variant="accent" size="sm">
+                <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-bold whitespace-nowrap shadow-2xs">
                   GPA 3.55
-                </Badge>
+                </span>
+              </div>
+
+              {/* Single-Line Title & Subtitle */}
+              <div className="mb-4">
+                <h3 className="text-base font-bold text-slate-900 leading-tight whitespace-nowrap">
+                  University of Moratuwa
+                </h3>
+                <p className="text-[11px] font-mono text-slate-500 mt-0.5">
+                  Faculty of IT (Hons)
+                </p>
               </div>
 
               {/* District Rank Highlight Pill */}
-              <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-100 my-3.5 flex items-center justify-between">
+              <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-100 mb-4 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-blue-700 block font-semibold">
                     National Standing
@@ -99,8 +96,8 @@ export function BentoSection() {
             </div>
 
             <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
-              <span>Class of 2027</span>
-              <span className="text-blue-600 font-semibold">Undergraduate Scholar</span>
+              <span>Graduating in 2028</span>
+              <span className="text-blue-600 font-semibold">Undergraduate</span>
             </div>
           </motion.div>
 
@@ -113,28 +110,29 @@ export function BentoSection() {
             className="porcelain-card rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-purple-200 transition-all"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-purple-50 text-purple-600 border border-purple-200/60 shadow-2xs">
-                    <Briefcase className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900 leading-tight">
-                      Delight Products
-                    </h3>
-                    <p className="text-[11px] font-mono text-purple-700 font-medium">
-                      Co-Founder & Director
-                    </p>
-                  </div>
+              {/* Top Row: Icon + Highlighted Badge */}
+              <div className="flex items-center justify-between gap-2 mb-3.5">
+                <div className="p-2.5 rounded-xl bg-purple-50 text-purple-600 border border-purple-200/60 shadow-2xs">
+                  <Briefcase className="w-5 h-5" />
                 </div>
 
-                <Badge variant="muted" size="sm">
+                <span className="px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-mono font-bold whitespace-nowrap shadow-2xs">
                   2025 – Now
-                </Badge>
+                </span>
+              </div>
+
+              {/* Single-Line Title & Subtitle */}
+              <div className="mb-4">
+                <h3 className="text-base font-bold text-slate-900 leading-tight whitespace-nowrap">
+                  Delight Consumer Products
+                </h3>
+                <p className="text-[11px] font-mono text-purple-700 font-medium mt-0.5">
+                  Co-Founder & Director (Pvt) Ltd.
+                </p>
               </div>
 
               {/* Operational Focus Pill */}
-              <div className="p-3 rounded-xl bg-purple-50/60 border border-purple-100 my-3.5 flex items-center justify-between">
+              <div className="p-3 rounded-xl bg-purple-50/60 border border-purple-100 mb-4 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-purple-700 block font-semibold">
                     Enterprise Domain
@@ -165,7 +163,7 @@ export function BentoSection() {
             </div>
 
             <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
-              <span>Director (Pvt) Ltd</span>
+              <span>2025 - Now</span>
               <span className="text-purple-600 font-semibold">Executive Leadership</span>
             </div>
           </motion.div>
@@ -179,28 +177,29 @@ export function BentoSection() {
             className="porcelain-card rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-amber-200 transition-all"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-amber-50 text-amber-600 border border-amber-200/60 shadow-2xs">
-                    <Trophy className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900 leading-tight">
-                      Athletic Discipline
-                    </h3>
-                    <p className="text-[11px] font-mono text-amber-800">
-                      Karate & Kata
-                    </p>
-                  </div>
+              {/* Top Row: Icon + Highlighted Badge */}
+              <div className="flex items-center justify-between gap-2 mb-3.5">
+                <div className="p-2.5 rounded-xl bg-amber-50 text-amber-600 border border-amber-200/60 shadow-2xs">
+                  <Trophy className="w-5 h-5" />
                 </div>
 
-                <Badge variant="accent" size="sm">
+                <span className="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono font-bold whitespace-nowrap shadow-2xs">
                   2025 Medal
-                </Badge>
+                </span>
+              </div>
+
+              {/* Single-Line Title & Subtitle */}
+              <div className="mb-4">
+                <h3 className="text-base font-bold text-slate-900 leading-tight whitespace-nowrap">
+                  Sports Achievements
+                </h3>
+                <p className="text-[11px] font-mono text-amber-800 mt-0.5">
+                  Karate & Kata
+                </p>
               </div>
 
               {/* Athletic Standing Pill */}
-              <div className="p-3 rounded-xl bg-amber-50/60 border border-amber-100 my-3.5 flex items-center justify-between">
+              <div className="p-3 rounded-xl bg-amber-50/60 border border-amber-100 mb-4 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-amber-800 block font-semibold">
                     Competitive Honor

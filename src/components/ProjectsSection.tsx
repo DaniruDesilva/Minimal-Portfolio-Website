@@ -5,17 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FolderGit2 } from "lucide-react";
 import { projectsData } from "@/data/portfolio";
 import { ProjectCard } from "./ProjectCard";
-import { Badge } from "./ui/Badge";
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const categories = [
-    "All",
-    "Cloud SaaS & Operations",
-    "AI Tools & Web Applications",
-    "Production E-Commerce & Enterprise",
-    "EdTech & Classifieds",
+    { id: "All", label: "All Systems" },
+    { id: "Cloud SaaS", label: "Cloud SaaS" },
+    { id: "AI Tools", label: "AI Tools" },
+    { id: "E-Commerce", label: "E-Commerce" },
+    { id: "EdTech", label: "EdTech" },
   ];
 
   const filteredProjects =
@@ -31,36 +30,36 @@ export function ProjectsSection() {
     <section id="projects" className="py-20 border-t border-slate-200/80 scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Badge variant="accent" size="sm">
-                <FolderGit2 className="w-3.5 h-3.5" />
-                <span>PRODUCTION CASE STUDIES & BLUEPRINTS</span>
-              </Badge>
-              <span className="text-xs font-mono text-slate-500">
-                {projectsData.length} Live & Flagship Systems
-              </span>
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+          {/* Left: Section Title & Subtitle */}
+          <div className="max-w-xl space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-mono font-medium">
+              <FolderGit2 className="w-3.5 h-3.5" />
+              <span>PRODUCTION CASE STUDIES & BLUEPRINTS</span>
+              <span>•</span>
+              <span>{projectsData.length} Live Systems</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Featured Systems & Applications
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl leading-relaxed">
-              Explore split-blueprint case studies covering cloud-native SaaS, AI resume scoring engines, production e-commerce suites, and university lead systems.
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Explore split-blueprint case studies covering cloud-native SaaS, AI scoring engines, production e-commerce suites, and university lead systems.
             </p>
           </div>
 
-          {/* Category Filter Pills with Sliding Layout Indicator */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/80 shadow-2xs">
+          {/* Right: Clean Unbroken Filter Pills */}
+          <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200/80 shrink-0 self-start lg:self-end overflow-x-auto max-w-full shadow-2xs">
             {categories.map((cat) => {
-              const isSelected = selectedCategory === cat;
+              const isSelected = selectedCategory === cat.id;
               return (
                 <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium transition-colors ${
-                    isSelected ? "text-white font-semibold" : "text-slate-600 hover:text-slate-900"
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
+                    isSelected
+                      ? "text-white font-semibold shadow-xs"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
                   }`}
                 >
                   {isSelected && (
@@ -70,9 +69,7 @@ export function ProjectsSection() {
                       transition={{ type: "spring", stiffness: 450, damping: 35 }}
                     />
                   )}
-                  <span className="relative z-10">
-                    {cat === "All" ? "All Systems" : cat.split("&")[0].trim()}
-                  </span>
+                  <span className="relative z-10">{cat.label}</span>
                 </button>
               );
             })}

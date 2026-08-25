@@ -7,7 +7,6 @@ import {
   Cpu,
   HelpCircle,
   Layers,
-  Sparkles,
 } from "lucide-react";
 import { skillsCategories } from "@/data/portfolio";
 import { Badge } from "./ui/Badge";
@@ -45,7 +44,7 @@ export function TechMatrix() {
           </p>
         </div>
 
-        {/* Bento Grid Layout for Categories */}
+        {/* Balanced 3-Column Equal Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {skillsCategories.map((category, catIdx) => (
             <motion.div
@@ -54,10 +53,10 @@ export function TechMatrix() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.45, delay: catIdx * 0.08 }}
-              className="porcelain-card rounded-2xl p-6 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-200 transition-all"
+              className="porcelain-card flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-2xs hover:border-blue-200 transition-all justify-between"
             >
-              {/* Category Header */}
-              <div>
+              {/* Category Header & Chips */}
+              <div className="flex flex-col flex-1">
                 <div className="flex items-center justify-between gap-3 mb-2">
                   <div className="flex items-center gap-2.5">
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-200/70 shadow-2xs">
@@ -78,13 +77,14 @@ export function TechMatrix() {
                   {category.tagline}
                 </p>
 
-                {/* Compact Tech Chip Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {category.items.map((skill, sIdx) => (
+                {/* Symmetrical 2-Column Grid */}
+                <div className="grid grid-cols-2 gap-2.5 flex-1 mb-6">
+                  {category.items.map((skill) => (
                     <Tooltip
-                      key={sIdx}
+                      key={skill.name}
                       position="top"
                       className="w-72 z-50"
+                      wrapperClassName="w-full flex flex-col"
                       content={
                         <div className="space-y-1.5">
                           <div className="flex items-center justify-between text-[11px] border-b border-slate-700/80 pb-1 font-mono">
@@ -101,23 +101,11 @@ export function TechMatrix() {
                         </div>
                       }
                     >
-                      <div className="w-full flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 hover:bg-blue-50/70 border border-slate-200/70 hover:border-blue-300 transition-all cursor-help group shadow-2xs">
-                        <div className="flex items-center gap-1.5 min-w-0">
-                          {skill.highlight && (
-                            <Sparkles className="w-3 h-3 text-blue-600 shrink-0" />
-                          )}
-                          <span className="text-xs font-semibold text-slate-800 group-hover:text-blue-900 truncate transition-colors">
-                            {skill.name}
-                          </span>
-                        </div>
-
-                        <span
-                          className={`text-[9px] font-mono font-medium px-1.5 py-0.5 rounded shrink-0 ml-1.5 ${
-                            skill.level === "Expert"
-                              ? "bg-blue-100/80 text-blue-800"
-                              : "bg-slate-200/80 text-slate-700"
-                          }`}
-                        >
+                      <div className="w-full flex flex-col justify-center p-2.5 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-blue-400 hover:shadow-xs transition-all cursor-default group">
+                        <span className="text-xs font-semibold text-slate-800 group-hover:text-blue-600 truncate">
+                          {skill.name}
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-400 font-medium mt-0.5">
                           {skill.level}
                         </span>
                       </div>
@@ -126,10 +114,10 @@ export function TechMatrix() {
                 </div>
               </div>
 
-              {/* Bottom Hint */}
-              <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                <span className="flex items-center gap-1">
-                  <HelpCircle className="w-3 h-3" /> Hover for details
+              {/* Grounded Baseline Footer with Hairline Divider */}
+              <div className="mt-auto pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span className="flex items-center gap-1.5 text-slate-400">
+                  <HelpCircle className="w-3.5 h-3.5" /> Hover for details
                 </span>
                 <span className="text-slate-500 font-medium">UoM & Production</span>
               </div>

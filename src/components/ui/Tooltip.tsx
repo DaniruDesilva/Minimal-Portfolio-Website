@@ -8,6 +8,7 @@ interface TooltipProps {
   children: React.ReactNode;
   position?: "top" | "bottom" | "left" | "right";
   className?: string;
+  wrapperClassName?: string;
 }
 
 export function Tooltip({
@@ -15,6 +16,7 @@ export function Tooltip({
   children,
   position = "top",
   className = "",
+  wrapperClassName = "inline-flex",
 }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -27,7 +29,7 @@ export function Tooltip({
 
   return (
     <div
-      className="relative inline-flex"
+      className={`relative ${wrapperClassName}`}
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
       onFocus={() => setIsVisible(true)}
