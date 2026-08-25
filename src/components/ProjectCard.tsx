@@ -24,12 +24,14 @@ type TabType = "problem" | "architecture" | "impact";
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [activeTab, setActiveTab] = useState<TabType>("problem");
 
+  const tabs: { id: TabType; label: string; icon: React.ReactNode }[] = [
+    { id: "problem", label: "Problem & Solution", icon: <Layers className="w-3.5 h-3.5" /> },
+    { id: "architecture", label: "Architecture", icon: <Cpu className="w-3.5 h-3.5" /> },
+    { id: "impact", label: "Key Impact", icon: <BarChart3 className="w-3.5 h-3.5" /> },
+  ];
+
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: 0.08 }}
+    <article
       className="porcelain-card rounded-2xl p-5 sm:p-7 bg-white/95 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300"
     >
       <div className="grid lg:grid-cols-12 gap-8 items-center">
@@ -106,46 +108,35 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.summary}
           </p>
 
-          {/* Interactive Tab Controls */}
-          <div className="flex items-center gap-1 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80 w-fit">
-            <button
-              onClick={() => setActiveTab("problem")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-                activeTab === "problem"
-                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/80 font-semibold"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
-              }`}
-            >
-              <Layers className="w-3 h-3" />
-              <span>Problem & Solution</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab("architecture")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-                activeTab === "architecture"
-                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/80 font-semibold"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
-              }`}
-            >
-              <Cpu className="w-3 h-3" />
-              <span>Architecture</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab("impact")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-                activeTab === "impact"
-                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/80 font-semibold"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
-              }`}
-            >
-              <BarChart3 className="w-3 h-3" />
-              <span>Key Impact</span>
-            </button>
+          {/* Interactive Sliding Tab Controls */}
+          <div className="flex items-center gap-1 p-1 bg-slate-100/90 rounded-xl border border-slate-200/80 w-fit">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                    isActive ? "text-slate-900 font-semibold" : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId={`projectDetailTab-${project.id}`}
+                      className="absolute inset-0 bg-white rounded-lg shadow-xs border border-slate-200/80 -z-0"
+                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    {tab.icon}
+                    <span>{tab.label}</span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Tab Body Content */}
+          {/* Tab Body Content with Crossfade */}
           <div className="min-h-[135px] py-1">
             <AnimatePresence mode="wait">
               {activeTab === "problem" && (
@@ -214,7 +205,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </AnimatePresence>
           </div>
 
-          {/* Tech Stack Chips & Action Buttons */}
+          {/* Tech Stack Chips & High-Contrast Action Buttons */}
           <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
             {/* Tech Chips */}
             <div className="flex flex-wrap items-center gap-1.5">
@@ -237,7 +228,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all shadow-2xs"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
                   <span>Source</span>
@@ -249,7 +240,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow-xs transition-all"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow-xs hover:shadow-md transition-all active:scale-98"
                 >
                   <span>Live Website</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -263,6 +254,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

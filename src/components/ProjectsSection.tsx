@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FolderGit2 } from "lucide-react";
 import { projectsData } from "@/data/portfolio";
 import { ProjectCard } from "./ProjectCard";
@@ -20,7 +21,11 @@ export function ProjectsSection() {
   const filteredProjects =
     selectedCategory === "All"
       ? projectsData
-      : projectsData.filter((p) => p.category.includes(selectedCategory) || selectedCategory.includes(p.category));
+      : projectsData.filter(
+          (p) =>
+            p.category.toLowerCase().includes(selectedCategory.toLowerCase()) ||
+            selectedCategory.toLowerCase().includes(p.category.toLowerCase())
+        );
 
   return (
     <section id="projects" className="py-20 border-t border-slate-200/80 scroll-mt-24">
@@ -46,30 +51,51 @@ export function ProjectsSection() {
             </p>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-xl border border-slate-200/90 shadow-2xs">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                  selectedCategory === cat
-                    ? "bg-blue-600 text-white shadow-xs"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                }`}
-              >
-                {cat === "All" ? "All Systems" : cat.split("&")[0].trim()}
-              </button>
-            ))}
+          {/* Category Filter Pills with Sliding Layout Indicator */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/80 shadow-2xs">
+            {categories.map((cat) => {
+              const isSelected = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium transition-colors ${
+                    isSelected ? "text-white font-semibold" : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeCategoryFilter"
+                      className="absolute inset-0 bg-blue-600 rounded-xl shadow-xs -z-0"
+                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                    />
+                  )}
+                  <span className="relative z-10">
+                    {cat === "All" ? "All Systems" : cat.split("&")[0].trim()}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Project Cards List */}
-        <div className="space-y-8">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        {/* Project Cards List with Smooth AnimatePresence Layout */}
+        <motion.div layout className="space-y-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.97, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                <ProjectCard project={project} index={index} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

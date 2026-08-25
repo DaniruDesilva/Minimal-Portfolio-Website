@@ -6,10 +6,10 @@ import { ArrowUpRight, Clock, Menu, X } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 
 const navLinks = [
-  { label: "Case Studies", href: "#projects" },
-  { label: "Leadership & Proof", href: "#proof" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Case Studies", href: "#projects", id: "projects" },
+  { label: "Leadership & Proof", href: "#proof", id: "proof" },
+  { label: "Skills", href: "#skills", id: "skills" },
+  { label: "Contact", href: "#contact", id: "contact" },
 ];
 
 export function Navbar() {
@@ -19,7 +19,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const { personal } = portfolioData;
 
-  // Live ticking local clock formatted cleanly
+  // Live ticking local clock
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -37,29 +37,40 @@ export function Navbar() {
     return () => clearInterval(interval);
   }, []);
 
-  // Track active section and scroll state
+  // IntersectionObserver for active section tracking and scroll shadow
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      const sections = ["projects", "proof", "skills", "contact"];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "-25% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = ["projects", "proof", "skills", "contact"];
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -71,8 +82,8 @@ export function Navbar() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className={`pointer-events-auto w-full max-w-6xl rounded-full transition-all duration-300 ${
             scrolled
-              ? "bg-white/90 backdrop-blur-xl border border-slate-200 shadow-md shadow-slate-900/5 py-2.5 px-4 sm:px-5"
-              : "bg-white/80 backdrop-blur-lg border border-slate-200/80 shadow-sm py-3 px-4 sm:px-6"
+              ? "bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md shadow-slate-900/5 py-2.5 px-4 sm:px-5"
+              : "bg-white/85 backdrop-blur-lg border border-slate-200/80 shadow-sm py-3 px-4 sm:px-6"
           } flex items-center justify-between gap-4`}
         >
           {/* Left: Brand Monogram & Live Beacon */}
@@ -110,15 +121,15 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Center: Desktop Nav Links */}
+          {/* Center: Desktop Nav Links with Sliding Active Indicator */}
           <div className="hidden md:flex items-center gap-1 bg-slate-100/80 p-1 rounded-full border border-slate-200/60">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.replace("#", "");
+              const isActive = activeSection === link.id;
               return (
                 <a
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
-                  className={`relative px-3.5 py-1 text-xs font-medium rounded-full transition-all duration-200 ${
+                  className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors ${
                     isActive
                       ? "text-slate-900 font-semibold"
                       : "text-slate-600 hover:text-slate-900"
@@ -127,11 +138,11 @@ export function Navbar() {
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 bg-white rounded-full shadow-xs border border-slate-200/70 -z-10"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute inset-0 bg-white rounded-full shadow-xs border border-slate-200/80 -z-0"
+                      transition={{ type: "spring", stiffness: 450, damping: 35 }}
                     />
                   )}
-                  {link.label}
+                  <span className="relative z-10">{link.label}</span>
                 </a>
               );
             })}
@@ -192,10 +203,14 @@ export function Navbar() {
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => (
                 <a
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3.5 py-2.5 rounded-xl bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-600 font-medium text-xs border border-slate-200/70 transition-colors"
+                  className={`px-3.5 py-2.5 rounded-xl text-xs font-medium border transition-colors ${
+                    activeSection === link.id
+                      ? "bg-blue-50 text-blue-700 border-blue-200 font-semibold"
+                      : "bg-slate-50 text-slate-700 border-slate-200/70 hover:bg-slate-100"
+                  }`}
                 >
                   {link.label}
                 </a>
