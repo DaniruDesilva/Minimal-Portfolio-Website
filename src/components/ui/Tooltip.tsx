@@ -41,9 +41,9 @@ export function Tooltip({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.12 } }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className={`absolute ${positionClasses[position]} z-40 w-64 max-w-xs pointer-events-none ${className}`}
+            className={`absolute ${positionClasses[position]} z-50 w-64 max-w-xs pointer-events-none ${className}`}
           >
-            <div className="p-2.5 rounded-lg bg-slate-900/95 text-white text-xs leading-relaxed shadow-xl backdrop-blur-md border border-slate-700/60">
+            <div className="p-2.5 rounded-xl bg-slate-900 text-white text-xs leading-relaxed shadow-2xl backdrop-blur-md border border-slate-700/80">
               {content}
             </div>
           </motion.div>

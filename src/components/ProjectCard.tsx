@@ -6,11 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowUpRight,
   BarChart3,
-  CheckCircle2,
   Cpu,
-  ExternalLink,
   Layers,
-  Sparkles,
 } from "lucide-react";
 import { Project } from "@/types";
 import { Badge } from "./ui/Badge";
@@ -26,34 +23,29 @@ type TabType = "problem" | "architecture" | "impact";
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [activeTab, setActiveTab] = useState<TabType>("problem");
-  const isEven = index % 2 === 0;
 
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: 0.1 }}
+      transition={{ duration: 0.5, delay: 0.08 }}
       className="porcelain-card rounded-2xl p-5 sm:p-7 bg-white/95 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300"
     >
       <div className="grid lg:grid-cols-12 gap-8 items-center">
-        {/* Media / Browser Device Frame Side (6 cols) */}
-        <div
-          className={`lg:col-span-6 ${
-            isEven ? "lg:order-first" : "lg:order-last"
-          }`}
-        >
+        {/* Media / Browser Device Frame Side (6 cols consistently on Left) */}
+        <div className="lg:col-span-6">
           <div className="rounded-xl overflow-hidden border border-slate-200/90 shadow-md bg-slate-50 group">
             {/* Simulated Browser Chrome Topbar */}
-            <div className="flex items-center justify-between px-3.5 py-2 bg-slate-100/90 border-b border-slate-200/80">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-400/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+            <div className="flex items-center justify-between px-4 py-2.5 bg-slate-100/90 border-b border-slate-200/80">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-400/90" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400/90" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/90" />
               </div>
 
-              <div className="px-3 py-0.5 rounded-md bg-white border border-slate-200/70 text-[10px] font-mono text-slate-500 max-w-[200px] truncate text-center">
-                {project.liveUrl || `localhost:3000/${project.id}`}
+              <div className="px-3.5 py-0.5 rounded-md bg-white border border-slate-200/80 text-[11px] font-mono text-slate-600 max-w-[240px] truncate text-center shadow-2xs mx-2 flex-1">
+                {project.liveUrl ? project.liveUrl.replace("https://", "").replace(/\/$/, "") : `danirudesilva.com/${project.id}`}
               </div>
 
               <div className="w-8 flex justify-end">
@@ -76,11 +68,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-medium text-xs backdrop-blur-xs"
+                  className="absolute inset-0 bg-slate-950/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-medium text-xs backdrop-blur-xs"
                 >
-                  <span className="bg-white/90 text-slate-900 px-3.5 py-1.5 rounded-full shadow-lg font-semibold flex items-center gap-1.5">
+                  <span className="bg-white/95 text-slate-900 px-4 py-2 rounded-full shadow-lg font-semibold text-xs flex items-center gap-1.5 hover:bg-white hover:scale-105 transition-all">
                     Launch Production App
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-blue-600" />
                   </span>
                 </a>
               )}
@@ -88,16 +80,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </div>
 
-        {/* Data & Interactive Blueprint Side (6 cols) */}
-        <div
-          className={`lg:col-span-6 space-y-4 ${
-            isEven ? "lg:order-last" : "lg:order-first"
-          }`}
-        >
+        {/* Data & Interactive Blueprint Side (6 cols on Right) */}
+        <div className="lg:col-span-6 space-y-4">
           {/* Metadata Header */}
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-semibold text-blue-600 px-2 py-0.5 rounded bg-blue-50 border border-blue-200/60">
+              <span className="font-mono text-xs font-semibold text-blue-600 px-2.5 py-0.5 rounded bg-blue-50 border border-blue-200/60">
                 PROJ-0{index + 1}
               </span>
               <span className="text-xs font-mono text-slate-500 font-medium">
@@ -119,12 +107,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </p>
 
           {/* Interactive Tab Controls */}
-          <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200/80 w-fit">
+          <div className="flex items-center gap-1 p-1 bg-slate-100/90 rounded-lg border border-slate-200/80 w-fit">
             <button
               onClick={() => setActiveTab("problem")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 activeTab === "problem"
-                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/70"
+                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/80 font-semibold"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
               }`}
             >
@@ -136,7 +124,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               onClick={() => setActiveTab("architecture")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 activeTab === "architecture"
-                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/70"
+                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/80 font-semibold"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
               }`}
             >
@@ -148,7 +136,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               onClick={() => setActiveTab("impact")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                 activeTab === "impact"
-                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/70"
+                  ? "bg-white text-slate-900 shadow-xs border border-slate-200/80 font-semibold"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"
               }`}
             >
@@ -158,7 +146,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           {/* Tab Body Content */}
-          <div className="min-h-[140px] py-1">
+          <div className="min-h-[135px] py-1">
             <AnimatePresence mode="wait">
               {activeTab === "problem" && (
                 <motion.div
@@ -167,14 +155,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.18 }}
-                  className="space-y-2.5 text-xs text-slate-700 leading-relaxed"
+                  className="rounded-xl border border-slate-200/80 bg-slate-50/80 p-3.5 sm:p-4 text-xs sm:text-sm text-slate-700"
                 >
-                  <div className="p-3 rounded-lg bg-amber-50/70 border border-amber-200/60">
-                    <strong className="text-amber-900 font-mono block text-[10px] uppercase mb-0.5">
-                      The Challenge
-                    </strong>
-                    <span>{project.problem}</span>
-                  </div>
+                  <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 block mb-1">
+                    The Engineering Problem
+                  </span>
+                  <p className="leading-relaxed text-slate-700">{project.problem}</p>
                 </motion.div>
               )}
 

@@ -3,8 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Boxes,
-  CheckCircle,
   Code2,
   Cpu,
   HelpCircle,
@@ -43,24 +41,24 @@ export function TechMatrix() {
             Technical Stack & Engineering Depth
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-            Hover over any language, framework, or database to inspect its production use-case and hands-on implementation details.
+            Hover over any technology chip to reveal practical implementation details, production use cases, and hands-on depth.
           </p>
         </div>
 
         {/* Bento Grid Layout for Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {skillsCategories.map((category, catIdx) => (
             <motion.div
               key={category.category}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: catIdx * 0.1 }}
-              className="porcelain-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:border-blue-200 bg-white"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.45, delay: catIdx * 0.08 }}
+              className="porcelain-card rounded-2xl p-6 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-200 transition-all"
             >
               {/* Category Header */}
               <div>
-                <div className="flex items-center justify-between gap-3 mb-3">
+                <div className="flex items-center justify-between gap-3 mb-2">
                   <div className="flex items-center gap-2.5">
                     <div className="p-2 rounded-xl bg-slate-50 border border-slate-200/70 shadow-2xs">
                       {getCategoryIcon(category.icon)}
@@ -70,23 +68,23 @@ export function TechMatrix() {
                         {category.category}
                       </h3>
                       <span className="text-[11px] font-mono text-slate-500">
-                        {category.items.length} Technologies
+                        {category.items.length} Production Skills
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-600 mb-6 leading-relaxed">
+                <p className="text-xs text-slate-600 mb-5 leading-relaxed">
                   {category.tagline}
                 </p>
 
-                {/* Skill Items List */}
-                <div className="space-y-2.5">
+                {/* Compact Tech Chip Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {category.items.map((skill, sIdx) => (
                     <Tooltip
                       key={sIdx}
                       position="top"
-                      className="w-72"
+                      className="w-72 z-50"
                       content={
                         <div className="space-y-1.5">
                           <div className="flex items-center justify-between text-[11px] border-b border-slate-700/80 pb-1 font-mono">
@@ -103,32 +101,25 @@ export function TechMatrix() {
                         </div>
                       }
                     >
-                      <div className="w-full group flex items-center justify-between p-2.5 rounded-xl bg-slate-50/70 hover:bg-blue-50/70 border border-slate-200/60 hover:border-blue-200 transition-all cursor-help">
-                        <div className="flex items-center gap-2">
-                          {skill.highlight ? (
-                            <Sparkles className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                          ) : (
-                            <CheckCircle className="w-3.5 h-3.5 text-slate-400 shrink-0 group-hover:text-blue-500 transition-colors" />
+                      <div className="w-full flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 hover:bg-blue-50/70 border border-slate-200/70 hover:border-blue-300 transition-all cursor-help group shadow-2xs">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          {skill.highlight && (
+                            <Sparkles className="w-3 h-3 text-blue-600 shrink-0" />
                           )}
-                          <span className="text-xs font-semibold text-slate-800 group-hover:text-blue-900 transition-colors">
+                          <span className="text-xs font-semibold text-slate-800 group-hover:text-blue-900 truncate transition-colors">
                             {skill.name}
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[10px] font-mono text-slate-500 group-hover:text-blue-700">
-                            {skill.experience}
-                          </span>
-                          <span
-                            className={`text-[9px] font-mono font-medium px-1.5 py-0.5 rounded ${
-                              skill.level === "Expert"
-                                ? "bg-blue-100/70 text-blue-800"
-                                : "bg-slate-200/70 text-slate-700"
-                            }`}
-                          >
-                            {skill.level}
-                          </span>
-                        </div>
+                        <span
+                          className={`text-[9px] font-mono font-medium px-1.5 py-0.5 rounded shrink-0 ml-1.5 ${
+                            skill.level === "Expert"
+                              ? "bg-blue-100/80 text-blue-800"
+                              : "bg-slate-200/80 text-slate-700"
+                          }`}
+                        >
+                          {skill.level}
+                        </span>
                       </div>
                     </Tooltip>
                   ))}
@@ -136,9 +127,9 @@ export function TechMatrix() {
               </div>
 
               {/* Bottom Hint */}
-              <div className="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+              <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
                 <span className="flex items-center gap-1">
-                  <HelpCircle className="w-3 h-3" /> Hover for practical use
+                  <HelpCircle className="w-3 h-3" /> Hover for details
                 </span>
                 <span className="text-slate-500 font-medium">UoM & Production</span>
               </div>

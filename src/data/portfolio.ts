@@ -204,7 +204,7 @@ export const portfolioData = {
       title: "Zynveo ERP — Cloud-Native Retail & FMCG SaaS",
       category: "Cloud SaaS & Operations",
       year: "2026",
-      image: "/images/projects/zynveo.png",
+      image: "/images/projects/Zynveoweb.png",
       liveUrl: "https://zynveo.com/",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
@@ -228,7 +228,7 @@ export const portfolioData = {
       title: "AI-Powered ATS Resume Builder",
       category: "AI Tools & Web Applications",
       year: "2026",
-      image: "/images/projects/ats-cv.png",
+      image: "/images/projects/Ats-Cv.png",
       liveUrl: "",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
@@ -252,7 +252,7 @@ export const portfolioData = {
       title: "Delight Consumer Products — E-Commerce & Admin Suite",
       category: "Production E-Commerce & Enterprise",
       year: "2025 - 2026",
-      image: "/images/projects/delight.png",
+      image: "/images/projects/Delight.png",
       liveUrl: "https://delightconsumerproducts.lk/",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
@@ -276,7 +276,7 @@ export const portfolioData = {
       title: "Guruvaru.LK — National Tuition Class Discovery Portal",
       category: "EdTech & Classifieds",
       year: "2025",
-      image: "/images/projects/guruvaru.png",
+      image: "/images/projects/Guruvaru.png",
       liveUrl: "https://guruvaru.lk/",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
@@ -298,8 +298,8 @@ export const portfolioData = {
       id: "edupath-ai",
       title: "EduPath — AI-Driven Career Pathway Platform",
       category: "Academic Engineering Project",
-      year: "2025",
-      image: "/images/projects/edupath.png",
+      year: "2026",
+      image: "/images/projects/EduPath.jpeg",
       liveUrl: "",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:

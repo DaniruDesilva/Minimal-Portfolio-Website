@@ -189,19 +189,6 @@ export function Contact() {
                 </div>
               </div>
             </div>
-
-            {/* University & Location Badge Card */}
-            <div className="porcelain-card rounded-2xl p-5 bg-white border border-slate-200/80 space-y-2">
-              <span className="text-[10px] font-mono uppercase text-slate-400 tracking-wider font-semibold block">
-                Current Affiliation
-              </span>
-              <p className="text-xs font-bold text-slate-900">
-                {personal.education}
-              </p>
-              <p className="text-xs text-slate-500 font-mono">
-                Location: {personal.location} • Available for Remote & Onsite
-              </p>
-            </div>
           </div>
 
           {/* Right Column: Project Intake Form */}

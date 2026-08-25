@@ -35,10 +35,10 @@ export function Hero() {
   };
 
   const floatingTags = [
-    { label: "Next.js 16", color: "bg-blue-600 text-white", position: "top-4 -left-4 sm:-left-6" },
-    { label: "Supabase", color: "bg-emerald-600 text-white", position: "bottom-12 -left-4 sm:-left-6" },
-    { label: "React 19", color: "bg-slate-900 text-white", position: "top-1/3 -right-4 sm:-right-6" },
-    { label: "Docker", color: "bg-indigo-600 text-white", position: "-bottom-3 right-6" },
+    { label: "Next.js 16", dotColor: "bg-blue-600", position: "-top-3 -left-3 sm:-left-4" },
+    { label: "Supabase", dotColor: "bg-emerald-500", position: "bottom-16 -left-3 sm:-left-5" },
+    { label: "React 19", dotColor: "bg-cyan-500", position: "top-1/4 -right-3 sm:-right-4" },
+    { label: "Docker", dotColor: "bg-indigo-500", position: "-bottom-2 right-6" },
   ];
 
   return (
@@ -183,68 +183,57 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column (5 cols): High-End Profile Studio Card */}
+          {/* Right Column (5 cols): Frosted Porcelain Studio Profile Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 relative flex justify-center mt-6 lg:mt-0"
           >
-            <div className="relative w-full max-w-[360px] sm:max-w-[380px]">
-              {/* Decorative Aura */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-transparent rounded-3xl blur-xl -z-10" />
+            <div className="relative w-full max-w-[350px] sm:max-w-[370px]">
+              {/* Soft Subtle Glow Background */}
+              <div className="absolute -inset-2 bg-gradient-to-br from-blue-100/60 via-indigo-50/40 to-transparent rounded-3xl blur-2xl -z-10" />
 
-              {/* Main Profile Card */}
-              <div className="porcelain-card rounded-2xl overflow-hidden p-3 bg-white border border-slate-200/90 shadow-xl">
-                <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-slate-100">
+              {/* Main Frosted Porcelain Profile Card */}
+              <div className="relative p-3.5 bg-white/95 backdrop-blur-xl border border-slate-200/80 rounded-3xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.07)]">
+                <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-100">
                   <Image
-                    src="/images/profile.jpg"
+                    src="/images/Profile.png"
                     alt="Daniru De Silva — Full-Stack Software Engineer"
                     fill
                     sizes="(max-width: 768px) 100vw, 380px"
                     priority
                     className="object-cover object-top hover:scale-105 transition-transform duration-500"
                   />
-
-                  {/* Gradient bottom overlay for credentials */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-900/40 to-transparent p-4 text-white">
-                    <p className="font-bold text-base tracking-tight leading-none">
-                      {personal.name}
-                    </p>
-                    <p className="text-xs text-slate-300 font-mono mt-1">
-                      IT Undergraduate @ UoM
-                    </p>
-                  </div>
                 </div>
 
-                {/* Card footer meta badge */}
-                <div className="p-2.5 pt-3 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-1.5">
+                {/* Elegant Status Footer Strip */}
+                <div className="mt-3 flex items-center justify-between px-1.5 text-xs font-mono text-slate-600">
+                  <span className="flex items-center gap-1.5 font-medium text-emerald-700 bg-emerald-50/80 px-2 py-0.5 rounded-full border border-emerald-200/60">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-beacon-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
-                    <span className="text-[11px] font-mono font-medium text-emerald-700">
-                      Open for Internships & Projects
-                    </span>
-                  </div>
+                    Open for Internships
+                  </span>
 
                   <span className="text-[11px] font-mono text-slate-500">
-                    Galle, LK
+                    Galle, Sri Lanka
                   </span>
                 </div>
               </div>
 
-              {/* Floating Animated Skill Chips */}
+              {/* Subtle Floating Frosted Tech Chips */}
               {floatingTags.map((tag, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 + idx * 0.1 }}
-                  className={`absolute ${tag.position} z-20 px-3 py-1 rounded-full text-xs font-mono font-semibold shadow-lg shadow-slate-900/10 border border-white/40 backdrop-blur-md ${tag.color}`}
+                  transition={{ duration: 0.4, delay: 0.35 + idx * 0.1 }}
+                  className={`absolute ${tag.position} z-20 flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-white/90 backdrop-blur-md text-slate-800 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-blue-300 transition-all`}
                 >
-                  {tag.label}
+                  <span className={`w-1.5 h-1.5 rounded-full ${tag.dotColor}`} />
+                  <span>{tag.label}</span>
                 </motion.div>
               ))}
             </div>
