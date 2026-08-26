@@ -53,7 +53,7 @@ export function TechMatrix() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.45, delay: catIdx * 0.08 }}
-              className="porcelain-card flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-2xs hover:border-blue-200 transition-all justify-between"
+              className="porcelain-card flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-7 shadow-2xs hover:border-blue-200 transition-all justify-between"
             >
               {/* Category Header & Chips */}
               <div className="flex flex-col flex-1">
@@ -78,12 +78,12 @@ export function TechMatrix() {
                 </p>
 
                 {/* Symmetrical 2-Column Grid */}
-                <div className="grid grid-cols-2 gap-2.5 flex-1 mb-6">
+                <div className="grid grid-cols-2 gap-2 sm:gap-2.5 flex-1 mb-6">
                   {category.items.map((skill) => (
                     <Tooltip
                       key={skill.name}
                       position="top"
-                      className="w-72 z-50"
+                      className="w-[calc(100vw-2.5rem)] sm:w-72 max-w-xs z-50"
                       wrapperClassName="w-full flex flex-col"
                       content={
                         <div className="space-y-1.5">
@@ -101,11 +101,11 @@ export function TechMatrix() {
                         </div>
                       }
                     >
-                      <div className="w-full flex flex-col justify-center p-2.5 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-blue-400 hover:shadow-xs transition-all cursor-default group">
-                        <span className="text-xs font-semibold text-slate-800 group-hover:text-blue-600 truncate">
+                      <div className="w-full flex flex-col justify-center p-2 sm:p-2.5 rounded-xl bg-slate-50/80 hover:bg-white border border-slate-200/70 hover:border-blue-400 hover:shadow-xs transition-all cursor-default group">
+                        <span className="text-[11px] sm:text-xs font-semibold text-slate-800 group-hover:text-blue-600 truncate block">
                           {skill.name}
                         </span>
-                        <span className="text-[10px] font-mono text-slate-400 font-medium mt-0.5">
+                        <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 font-medium mt-0.5 block">
                           {skill.level}
                         </span>
                       </div>

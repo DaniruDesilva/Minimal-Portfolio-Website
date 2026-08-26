@@ -91,7 +91,7 @@ export function Contact() {
         {/* Equalized Height 12-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column (5 cols): Direct Contact Channels */}
-          <div className="lg:col-span-5 flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-2xs">
+          <div className="lg:col-span-5 flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-2xs">
             <h3 className="text-lg font-bold text-slate-900 mb-6">
               Direct Contact Channels
             </h3>
@@ -211,18 +211,18 @@ export function Contact() {
           </div>
 
           {/* Right Column (7 cols): Project Inquiry Form */}
-          <div className="lg:col-span-7 flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-2xs">
-            {/* Form Header */}
-            <div className="flex items-start justify-between gap-4 mb-6">
+          <div className="lg:col-span-7 flex flex-col h-full bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-2xs">
+            {/* Form Card Header (Stack on Mobile, Row on Tablet/Desktop) */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-6">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-tight">
                   Send a Message or Project Brief
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5 font-mono">
+                <p className="text-[11px] sm:text-xs text-slate-500 font-mono mt-0.5">
                   Estimated response time: &lt; 24 hours
                 </p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-medium flex items-center gap-1.5 shrink-0">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[11px] font-medium self-start sm:self-auto shrink-0">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse" />
                 Open for Opportunities
               </span>
@@ -304,11 +304,11 @@ export function Contact() {
               </div>
 
               {/* Action Footer */}
-              <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-end">
+              <div className="mt-auto pt-4 border-t border-slate-100 flex items-center justify-stretch sm:justify-end">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-xs sm:text-sm font-semibold shadow-md shadow-blue-500/20 transition-all active:scale-98"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white text-xs sm:text-sm font-semibold shadow-md shadow-blue-500/20 transition-all active:scale-98 w-full sm:w-auto"
                 >
                   <span>{isSubmitting ? "Sending Message..." : "Send Direct Message"}</span>
                   <Send className="w-3.5 h-3.5" />

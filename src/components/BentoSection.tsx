@@ -40,7 +40,7 @@ export function BentoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45 }}
-            className="porcelain-card rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-200 transition-all"
+            className="porcelain-card rounded-2xl p-5 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-200 transition-all"
           >
             <div>
               {/* Top Row: Icon + Highlighted Badge */}
@@ -56,7 +56,7 @@ export function BentoSection() {
 
               {/* Single-Line Title & Subtitle */}
               <div className="mb-4">
-                <h3 className="text-base font-bold text-slate-900 leading-tight whitespace-nowrap">
+                <h3 className="text-base font-bold text-slate-900 leading-tight">
                   University of Moratuwa
                 </h3>
                 <p className="text-[11px] font-mono text-slate-500 mt-0.5">
@@ -103,7 +103,7 @@ export function BentoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className="porcelain-card rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-purple-200 transition-all"
+            className="porcelain-card rounded-2xl p-5 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-purple-200 transition-all"
           >
             <div>
               {/* Top Row: Icon + Highlighted Badge */}
@@ -119,7 +119,7 @@ export function BentoSection() {
 
               {/* Single-Line Title & Subtitle */}
               <div className="mb-4">
-                <h3 className="text-base font-bold text-slate-900 leading-tight whitespace-nowrap">
+                <h3 className="text-base font-bold text-slate-900 leading-tight">
                   Delight Consumer Products
                 </h3>
                 <p className="text-[11px] font-mono text-purple-700 font-medium mt-0.5">
@@ -170,7 +170,7 @@ export function BentoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: 0.18 }}
-            className="porcelain-card rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-amber-200 transition-all"
+            className="porcelain-card rounded-2xl p-5 sm:p-7 bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-amber-200 transition-all"
           >
             <div>
               {/* Top Row: Icon + Highlighted Badge */}
@@ -186,7 +186,7 @@ export function BentoSection() {
 
               {/* Single-Line Title & Subtitle */}
               <div className="mb-4">
-                <h3 className="text-base font-bold text-slate-900 leading-tight whitespace-nowrap">
+                <h3 className="text-base font-bold text-slate-900 leading-tight">
                   Sports Achievements
                 </h3>
                 <p className="text-[11px] font-mono text-amber-800 mt-0.5">

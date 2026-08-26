@@ -75,19 +75,19 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
+      <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
         <motion.nav
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className={`pointer-events-auto w-full max-w-6xl rounded-full transition-all duration-300 ${
             scrolled
-              ? "bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md shadow-slate-900/5 py-2.5 px-4 sm:px-5"
-              : "bg-white/85 backdrop-blur-lg border border-slate-200/80 shadow-sm py-3 px-4 sm:px-6"
-          } flex items-center justify-between gap-4`}
+              ? "bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-md shadow-slate-900/5 py-2 px-3 sm:px-5"
+              : "bg-white/85 backdrop-blur-lg border border-slate-200/80 shadow-sm py-2.5 px-3 sm:px-6"
+          } flex items-center justify-between gap-2 sm:gap-4`}
         >
           {/* Left: Brand Monogram & Live Beacon */}
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href="#"
               className="flex items-center gap-2 group font-mono font-bold text-sm tracking-tight text-slate-900"
@@ -152,9 +152,10 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow-md transition-all active:scale-95 duration-150"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 text-xs font-medium rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow-md transition-all active:scale-95 duration-150"
             >
-              <span>Let&apos;s Talk</span>
+              <span className="hidden sm:inline">Let&apos;s Talk</span>
+              <span className="sm:hidden">Talk</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
 
@@ -190,7 +191,7 @@ export function Navbar() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-xs font-mono text-emerald-700 font-medium">
-                  UoM • GPA 3.55
+                  UoM • GPA 3.57
                 </span>
               </div>
               {localTime && (
