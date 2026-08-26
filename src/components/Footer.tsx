@@ -25,9 +25,9 @@ export function Footer() {
               {personal.monogram}
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900 leading-tight">
+              <div className="text-sm font-bold text-slate-900 leading-tight">
                 {personal.name}
-              </h4>
+              </div>
               <p className="text-xs text-slate-500 font-medium mt-0.5">
                 Full-Stack Software Engineer • IT Undergraduate @ University of Moratuwa
               </p>

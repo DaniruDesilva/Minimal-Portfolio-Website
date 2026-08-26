@@ -7,7 +7,7 @@ import { portfolioData } from "@/data/portfolio";
 
 const navLinks = [
   { label: "Case Studies", href: "#projects", id: "projects" },
-  { label: "Leadership & Proof", href: "#proof", id: "proof" },
+  { label: "Leadership & Proof", href: "#leadership", id: "leadership" },
   { label: "Skills", href: "#skills", id: "skills" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
@@ -48,7 +48,7 @@ export function Navbar() {
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          setActiveSection(entry.target.id === "proof" ? "leadership" : entry.target.id);
         }
       });
     };
@@ -60,7 +60,7 @@ export function Navbar() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ["projects", "proof", "skills", "contact"];
+    const sections = ["about", "projects", "leadership", "proof", "skills", "contact"];
 
     sections.forEach((id) => {
       const el = document.getElementById(id);

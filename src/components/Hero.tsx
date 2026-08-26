@@ -31,7 +31,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 overflow-hidden">
+    <section id="about" className="relative pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 overflow-hidden">
       {/* Editorial Decorative Canvas Grid */}
       <div className="absolute inset-0 bg-dot-grid pointer-events-none opacity-80" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -195,7 +195,7 @@ export function Hero() {
                 <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] bg-slate-100">
                   <Image
                     src="/images/Profile.png"
-                    alt="Daniru De Silva — Full-Stack Software Engineer"
+                    alt="Daniru De Silva — Full-Stack Software Engineer & IT Undergraduate at University of Moratuwa"
                     fill
                     sizes="(max-width: 768px) 100vw, 380px"
                     priority

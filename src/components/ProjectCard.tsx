@@ -76,7 +76,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50 border-t border-slate-200/80">
               <Image
                 src={project.image}
-                alt={project.title}
+                alt={`${project.title} — ${project.summary}`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 540px"
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"

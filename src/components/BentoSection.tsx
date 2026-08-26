@@ -14,7 +14,8 @@ import { Badge } from "./ui/Badge";
 
 export function BentoSection() {
   return (
-    <section id="proof" className="py-20 border-t border-slate-200/80 scroll-mt-24 bg-slate-50/40">
+    <section id="leadership" className="py-20 border-t border-slate-200/80 scroll-mt-24 bg-slate-50/40 relative">
+      <span id="proof" className="absolute -top-24 opacity-0 pointer-events-none" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="max-w-2xl mb-12">
