@@ -247,7 +247,7 @@ export const portfolioData = {
       title: "ATS Resume Builder — AI Career Suite",
       category: "AI Tools & Web Applications",
       year: "2026",
-      image: "/images/projects/Ats-Cv.png",
+      image: "/images/projects/ats-cv.png",
       liveUrl: "",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
@@ -271,7 +271,7 @@ export const portfolioData = {
       title: "Delight Products — E-Commerce Suite",
       category: "Production E-Commerce & Enterprise",
       year: "2025 - 2026",
-      image: "/images/projects/Delight.png",
+      image: "/images/projects/delight.png",
       liveUrl: "https://delightconsumerproducts.lk/",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
@@ -295,7 +295,7 @@ export const portfolioData = {
       title: "Guruvaru.LK — Education Discovery Portal",
       category: "EdTech & Classifieds",
       year: "2025",
-      image: "/images/projects/Guruvaru.png",
+      image: "/images/projects/guruvaru.png",
       liveUrl: "https://guruvaru.lk/",
       githubUrl: "https://github.com/DaniruDesilva",
       summary:
