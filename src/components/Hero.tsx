@@ -50,9 +50,9 @@ export function Hero() {
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/90 border border-slate-200/80 text-xs text-slate-700 font-medium">
                 <GraduationCap className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>B.Sc. (Hons) IT @ University of Moratuwa</span>
+                <span>B.Sc (Hons) IT @ University of Moratuwa</span>
                 <span className="text-slate-300">•</span>
-                <span className="font-mono text-slate-900 font-semibold">GPA 3.55/4.0</span>
+                <span className="font-mono text-slate-900 font-semibold">GPA 3.57/4.0</span>
               </div>
             </motion.div>
 
@@ -144,7 +144,7 @@ export function Hero() {
                   Academic Merit
                 </span>
                 <span className="text-lg sm:text-xl font-bold text-slate-900 font-mono">
-                  3.55 GPA
+                  3.57 GPA
                 </span>
                 <span className="text-[10px] text-blue-600 block truncate">
                   University of Moratuwa

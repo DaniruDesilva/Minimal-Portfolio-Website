@@ -10,7 +10,6 @@ import {
   Layers,
 } from "lucide-react";
 import { Project } from "@/types";
-import { GithubIcon } from "./ui/Icons";
 
 interface ProjectCardProps {
   project: Project;
@@ -221,39 +220,23 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           {/* Dedicated Full-Width Action Bar */}
-          <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
-            {project.githubUrl ? (
+          <div className="pt-3.5 border-t border-slate-100 flex items-center">
+            {project.liveUrl ? (
               <a
-                href={project.githubUrl}
+                href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-medium hover:bg-slate-50 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm shadow-blue-500/20 transition-all hover:gap-2 active:scale-98"
               >
-                <GithubIcon className="w-3.5 h-3.5 text-slate-500" />
-                <span>Source Code</span>
+                <span>Live Website</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             ) : (
-              <div />
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100/90 border border-slate-200 text-slate-500 text-xs font-mono select-none">
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                Internal Build
+              </span>
             )}
-
-            <div className="flex items-center gap-2">
-              {project.liveUrl ? (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm shadow-blue-500/20 transition-all hover:gap-2 active:scale-98"
-                >
-                  <span>Live Website</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100/90 border border-slate-200 text-slate-500 text-xs font-mono select-none">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
-                  Internal Build
-                </span>
-              )}
-            </div>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ export function BentoSection() {
             Academic Excellence & Executive Track Record
           </h2>
           <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-            Combining rigorous academic distinction at Sri Lanka&apos;s premier engineering university with hands-on company directorship and championship martial arts discipline.
+            I combine strong academic success from Sri Lanka's top engineering university with professional experience as a company director and the discipline of a championship martial artist.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export function BentoSection() {
                 </div>
 
                 <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-bold whitespace-nowrap shadow-2xs">
-                  GPA 3.55
+                  GPA 3.57
                 </span>
               </div>
 
@@ -60,7 +60,7 @@ export function BentoSection() {
                   University of Moratuwa
                 </h3>
                 <p className="text-[11px] font-mono text-slate-500 mt-0.5">
-                  Faculty of IT (Hons)
+                  Faculty of IT
                 </p>
               </div>
 
@@ -75,18 +75,14 @@ export function BentoSection() {
                   </span>
                 </div>
                 <span className="text-[10px] font-mono font-semibold text-blue-700 bg-white px-2 py-0.5 rounded border border-blue-200 shadow-2xs">
-                  Top 1%
+                  Top 3%
                 </span>
               </div>
 
               <div className="space-y-2 pt-1 text-xs text-slate-600 leading-relaxed">
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                  <span><strong>Group Leader</strong> for flagship EduPath AI multi-role platform.</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
-                  <span>Dean&apos;s List standing in Data Structures & OOP.</span>
+                  <span>Led the development of EduPath Platform, a multi-role educational platform.</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />

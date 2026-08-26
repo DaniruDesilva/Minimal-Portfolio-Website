@@ -21,10 +21,10 @@ export function ProjectsSection() {
     selectedCategory === "All"
       ? projectsData
       : projectsData.filter(
-          (p) =>
-            p.category.toLowerCase().includes(selectedCategory.toLowerCase()) ||
-            selectedCategory.toLowerCase().includes(p.category.toLowerCase())
-        );
+        (p) =>
+          p.category.toLowerCase().includes(selectedCategory.toLowerCase()) ||
+          selectedCategory.toLowerCase().includes(p.category.toLowerCase())
+      );
 
   return (
     <section id="projects" className="py-20 border-t border-slate-200/80 scroll-mt-24">
@@ -35,7 +35,7 @@ export function ProjectsSection() {
           <div className="max-w-xl space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-mono font-medium">
               <FolderGit2 className="w-3.5 h-3.5" />
-              <span>PRODUCTION CASE STUDIES & BLUEPRINTS</span>
+              <span>PRODUCTION CASE STUDIES</span>
               <span>•</span>
               <span>{projectsData.length} Live Systems</span>
             </div>
@@ -44,7 +44,7 @@ export function ProjectsSection() {
               Featured Systems & Applications
             </h2>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              Explore split-blueprint case studies covering cloud-native SaaS, AI scoring engines, production e-commerce suites, and university lead systems.
+              Explore my project case studies covering cloud-native SaaS, AI scoring engines, production e-commerce suites, and university lead systems.
             </p>
           </div>
 
@@ -56,11 +56,10 @@ export function ProjectsSection() {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${
-                    isSelected
-                      ? "text-white font-semibold shadow-xs"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
-                  }`}
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all ${isSelected
+                    ? "text-white font-semibold shadow-xs"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
+                    }`}
                 >
                   {isSelected && (
                     <motion.div

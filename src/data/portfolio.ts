@@ -13,7 +13,7 @@ export const portfolioData = {
     monogram: "DS",
     title: "Full-Stack Software Engineer & Builder",
     education: "B.Sc. (Hons) IT @ University of Moratuwa (GPA 3.55/4.0)",
-    email: "daniru.desilva2023@gmail.com",
+    email: "daniru.desilva1019@gmail.com",
     phone: "+94 77 823 1019",
     location: "Galle, Sri Lanka",
     portfolioUrl: "https://danirudesilva.com",
@@ -316,7 +316,7 @@ export const portfolioData = {
     {
       id: "edupath-ai",
       title: "EduPath — AI Career Pathway Platform",
-      category: "Academic Engineering Project",
+      category: "EdTech Academic Project",
       year: "2026",
       image: "/images/projects/EduPath.jpeg",
       liveUrl: "",
